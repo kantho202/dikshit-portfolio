@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { MdCode, MdDownload } from 'react-icons/md';
 import { FaArrowDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import image from '../asset/dikshit (2).png';
+import image from '../asset/Dikshit Chakma.png';
 
 function HeroSection() {
   const containerVariants = {
@@ -144,7 +144,7 @@ function HeroSection() {
                 src={image}
                 alt="Dikshit Chakma - Front End Developer"
                 fill
-                className="object-contain transition-all duration-700"
+                className="object-contain scale-110 transition-all duration-700"
                 priority
               />
               
@@ -322,7 +322,7 @@ function HeroSection() {
                   alt="Dikshit Chakma - Front End Developer"
                   fill
                   data-cursor="media"
-                  className="object-contain hover:scale-105 transition-all duration-700"
+                  className="object-contain scale-110 hover:scale-115 transition-all duration-700"
                   priority
                 />
                 
