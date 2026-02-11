@@ -7,11 +7,107 @@ import { Textarea } from '@/components/ui/textarea';
 import { MdArrowForward } from 'react-icons/md';
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export default function ContactSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    company: '',
+    message: '',
+  });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    console.log('=== Form Submission Started ===');
+    console.log('Form data:', formData);
+
+    try {
+      // Try API route first (for MongoDB), but fallback to direct submission
+      let apiSuccess = false;
+      
+      try {
+        console.log('Trying API route...');
+        const apiResponse = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        
+        if (apiResponse.ok) {
+          const apiData = await apiResponse.json();
+          if (apiData.success) {
+            apiSuccess = true;
+            console.log('API route succeeded');
+          }
+        }
+      } catch (apiError) {
+        console.log('API route failed, using direct submission:', apiError);
+      }
+
+      // If API failed, submit directly to Web3Forms
+      if (!apiSuccess) {
+        console.log('Submitting directly to Web3Forms...');
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: 'b87b175c-27aa-4df0-8a7d-9ff5e71d9358',
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || 'New Contact Form Submission from Portfolio',
+            message: `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company || 'Not provided'}\nSubject: ${formData.subject || 'Not provided'}\n\nMessage:\n${formData.message}`,
+          }),
+        });
+
+        const data = await response.json();
+        console.log('Web3Forms response:', data);
+
+        if (!data.success) {
+          throw new Error(data.message || 'Failed to send message');
+        }
+      }
+
+      // Success!
+      console.log('Form submitted successfully!');
+      setSubmitStatus('success');
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        company: '',
+        message: '',
+      });
+      
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('Error: ' + (error instanceof Error ? error.message : 'Failed to send message'));
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+      console.log('=== Form Submission Ended ===');
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -144,7 +240,7 @@ export default function ContactSection() {
               Say hello
             </motion.h2>
             
-            <form className="space-y-8 sm:space-y-12">
+            <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-12">
           <motion.div 
             variants={itemVariants}
             className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 sm:gap-x-12 gap-y-8 sm:gap-y-12"
@@ -165,6 +261,9 @@ export default function ContactSection() {
                 name="name"
                 type="text"
                 placeholder="Your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
                 className="border-0 border-b border-slate-300 dark:border-gray-700 bg-transparent rounded-none px-0 focus:border-slate-900 dark:focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base"
               />
             </motion.div>
@@ -185,6 +284,8 @@ export default function ContactSection() {
                 name="subject"
                 type="text"
                 placeholder="Choose subject"
+                value={formData.subject}
+                onChange={handleChange}
                 className="border-0 border-b border-slate-300 dark:border-gray-700 bg-transparent rounded-none px-0 focus:border-slate-900 dark:focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base"
               />
             </motion.div>
@@ -210,6 +311,8 @@ export default function ContactSection() {
                 name="company"
                 type="text"
                 placeholder="Distl"
+                value={formData.company}
+                onChange={handleChange}
                 className="border-0 border-b border-slate-300 dark:border-gray-700 bg-transparent rounded-none px-0 focus:border-slate-900 dark:focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base"
               />
             </motion.div>
@@ -230,6 +333,9 @@ export default function ContactSection() {
                 name="email"
                 type="email"
                 placeholder="Email address"
+                value={formData.email}
+                onChange={handleChange}
+                required
                 className="border-0 border-b border-slate-300 dark:border-gray-700 bg-transparent rounded-none px-0 focus:border-slate-900 dark:focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base"
               />
             </motion.div>
@@ -252,6 +358,9 @@ export default function ContactSection() {
               name="message"
               placeholder="Start typing here"
               rows={1}
+              value={formData.message}
+              onChange={handleChange}
+              required
               className="border-0 border-b border-slate-300 dark:border-gray-700 bg-transparent rounded-none px-0 resize-none min-h-[40px] focus:border-slate-900 dark:focus:border-white focus-visible:ring-0 focus-visible:ring-offset-0 text-sm sm:text-base"
             />
           </motion.div>
@@ -260,15 +369,33 @@ export default function ContactSection() {
             variants={itemVariants}
             className="pt-6 sm:pt-8"
           >
+            {submitStatus === 'success' && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-green-600 dark:text-green-400 mb-4 text-sm"
+              >
+                Message sent successfully! I&apos;ll get back to you soon.
+              </motion.p>
+            )}
+            {submitStatus === 'error' && (
+              <motion.p
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-red-600 dark:text-red-400 mb-4 text-sm"
+              >
+                Failed to send message. Please try again.
+              </motion.p>
+            )}
             <motion.div
               whileHover={{ x: 5 }}
               whileTap={{ scale: 0.95 }}
             >
               <Button 
                 type="submit"
-               
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? 'Sending...' : 'Submit'}
                 <motion.div
                   animate={{ x: [0, 5, 0] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: [0.4, 0, 0.6, 1] as const }}

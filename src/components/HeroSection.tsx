@@ -1,9 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { MdCode, MdKeyboardArrowDown, MdDownload } from 'react-icons/md';
+import { MdCode, MdDownload } from 'react-icons/md';
+import { FaArrowDown } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import image from '../asset/dikshit-Picsart-BackgroundRemover.jpg';
+import image from '../asset/dikshit (2).png';
 
 function HeroSection() {
   const containerVariants = {
@@ -143,7 +144,7 @@ function HeroSection() {
                 src={image}
                 alt="Dikshit Chakma - Front End Developer"
                 fill
-                className="object-cover grayscale-[10%] transition-all duration-700 opacity-95"
+                className="object-contain transition-all duration-700"
                 priority
               />
               
@@ -257,12 +258,7 @@ function HeroSection() {
               {/* Download Resume Button Only */}
               <motion.button
                 onClick={() => {
-                  const link = document.createElement('a');
-                  link.href = '/resume.pdf';
-                  link.download = 'Dikshit_Chakma_Resume.pdf';
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
+                  window.open('https://drive.google.com/uc?export=download&id=18xwq1dYq6dVCVdb1CnHgzvxGWzZOs8g4', '_blank');
                 }}
                 className="group bg-gradient-to-r from-primary to-blue-600 text-white px-4 py-2 sm:px-6 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-2"
                 whileHover={{ scale: 1.05 }}
@@ -326,7 +322,7 @@ function HeroSection() {
                   alt="Dikshit Chakma - Front End Developer"
                   fill
                   data-cursor="media"
-                  className="object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105 opacity-90 hover:opacity-100"
+                  className="object-contain hover:scale-105 transition-all duration-700"
                   priority
                 />
                 
@@ -399,8 +395,14 @@ function HeroSection() {
           className="absolute bottom-4 left-1/2 transform -translate-x-1/2 pointer-events-auto"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: [0.4, 0, 0.6, 1] as const }}
+          onClick={() => {
+            const aboutSection = document.getElementById('about');
+            if (aboutSection) {
+              aboutSection.scrollIntoView({ behavior: 'smooth' });
+            }
+          }}
         >
-          <MdKeyboardArrowDown className="text-slate-900 dark:text-white opacity-50 text-3xl hover:text-accent transition-colors cursor-pointer" />
+          <FaArrowDown className="text-slate-900 dark:text-white opacity-50 text-2xl hover:text-accent hover:opacity-100 transition-all cursor-pointer" />
         </motion.div>
       </motion.div>
 

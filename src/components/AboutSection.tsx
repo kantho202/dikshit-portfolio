@@ -115,12 +115,7 @@ export default function AboutSection() {
                   {/* Download Resume Button Only */}
                   <Button 
                     onClick={() => {
-                      const link = document.createElement('a');
-                      link.href = '/resume.pdf';
-                      link.download = 'Dikshit_Chakma_Resume.pdf';
-                      document.body.appendChild(link);
-                      link.click();
-                      document.body.removeChild(link);
+                      window.open('https://drive.google.com/uc?export=download&id=18xwq1dYq6dVCVdb1CnHgzvxGWzZOs8g4', '_blank');
                     }}
                     data-cursor="download"
                     className="group bg-primary hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(19,146,236,0.3)] hover:shadow-[0_0_30px_rgba(19,146,236,0.5)] transition-all relative overflow-hidden w-full sm:w-auto"
