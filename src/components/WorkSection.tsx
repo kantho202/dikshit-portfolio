@@ -75,7 +75,7 @@ export default function WorkSection() {
   };
 
   return (
-    <section className={`scroll-mt-[140px] sm:scroll-mt-[160px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 transition-all duration-500 ${
+    <section className={`scroll-mt-32 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 transition-all duration-500 ${
       isMuted ? 'opacity-40 grayscale' : 'opacity-100 grayscale-0'
     }`} id="work">
       <div className="max-w-7xl mx-auto">
