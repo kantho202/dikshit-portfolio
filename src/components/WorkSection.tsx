@@ -75,12 +75,12 @@ export default function WorkSection() {
   };
 
   return (
-    <section className={`scroll-mt-40 px-4 sm:px-6 lg:px-8 transition-all duration-500 ${
+    <section className={`scroll-mt-[140px] sm:scroll-mt-[160px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 transition-all duration-500 ${
       isMuted ? 'opacity-40 grayscale' : 'opacity-100 grayscale-0'
     }`} id="work">
       <div className="max-w-7xl mx-auto">
         <motion.div 
-          className="flex flex-col gap-12"
+          className="flex flex-col gap-8 sm:gap-12"
           ref={ref}
           variants={containerVariants}
           initial="hidden"
@@ -88,14 +88,14 @@ export default function WorkSection() {
         >
           <motion.div 
             variants={itemVariants}
-            className="flex flex-col gap-4 text-center sm:text-left"
+            className="flex flex-col gap-3 sm:gap-4 text-center sm:text-left"
           >
             <h2 className={`text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight transition-colors duration-500 ${
               isMuted ? 'text-slate-500 dark:text-slate-600' : 'text-slate-900 dark:text-white'
             }`}>
               What Fuels Me
             </h2>
-            <p className={`text-base sm:text-lg max-w-2xl mx-auto sm:mx-0 transition-colors duration-500 ${
+            <p className={`text-sm sm:text-base lg:text-lg max-w-2xl mx-auto sm:mx-0 px-4 sm:px-0 transition-colors duration-500 ${
               isMuted ? 'text-slate-400 dark:text-slate-500' : 'text-slate-600 dark:text-slate-300'
             }`}>
               Not all code is created equal. Here are the environments and challenges where I do my best work.
@@ -119,10 +119,10 @@ export default function WorkSection() {
                     scale: 1.02,
                     transition: { type: "spring", stiffness: 300 }
                   }}
-                  className="group relative overflow-hidden rounded-2xl sm:rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 h-64 sm:h-80 flex flex-col justify-end p-6 sm:p-8 cursor-pointer"
+                  className="group relative overflow-hidden rounded-xl sm:rounded-2xl lg:rounded-3xl bg-card border border-border hover:border-primary/50 transition-all duration-300 h-56 sm:h-64 lg:h-80 flex flex-col justify-end p-5 sm:p-6 lg:p-8 cursor-pointer"
                 >
                   <motion.div 
-                    className={`absolute -top-10 -right-10 text-muted-foreground/20 group-hover:opacity-30 transition-all duration-500 ${
+                    className={`absolute -top-8 sm:-top-10 -right-8 sm:-right-10 text-muted-foreground/20 group-hover:opacity-30 transition-all duration-500 ${
                       item.color === 'primary' ? 'group-hover:text-primary/10' :
                       item.color === 'purple-500' ? 'group-hover:text-purple-500/10' :
                       'group-hover:text-teal-400/10'
@@ -130,7 +130,7 @@ export default function WorkSection() {
                     whileHover={{ rotate: 5, scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <BgIconComponent className="text-[150px] sm:text-[200px] leading-none" />
+                    <BgIconComponent className="text-[120px] sm:text-[150px] lg:text-[200px] leading-none" />
                   </motion.div>
                   
                   <motion.div 
@@ -139,7 +139,7 @@ export default function WorkSection() {
                     whileHover={{ y: 0, opacity: 1 }}
                   >
                     <motion.div 
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-gradient-to-br border backdrop-blur-sm flex items-center justify-center mb-3 sm:mb-4 ${
+                      className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl lg:rounded-2xl bg-gradient-to-br border backdrop-blur-sm flex items-center justify-center mb-2 sm:mb-3 lg:mb-4 ${
                         item.color === 'primary' ? 'from-primary/20 to-transparent border-primary/20 text-primary' :
                         item.color === 'purple-500' ? 'from-purple-500/20 to-transparent border-purple-500/20 text-purple-500' :
                         'from-teal-400/20 to-transparent border-teal-400/20 text-teal-400'
@@ -147,11 +147,11 @@ export default function WorkSection() {
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
-                      <IconComponent className="text-[24px] sm:text-[28px]" />
+                      <IconComponent className="text-[20px] sm:text-[24px] lg:text-[28px]" />
                     </motion.div>
                     
                     <motion.h3 
-                      className="text-slate-900 dark:text-white text-xl sm:text-2xl font-bold mb-2 sm:mb-3"
+                      className="text-slate-900 dark:text-white text-lg sm:text-xl lg:text-2xl font-bold mb-1.5 sm:mb-2 lg:mb-3"
                       whileHover={{ x: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -165,7 +165,7 @@ export default function WorkSection() {
 
                   {/* Floating particles */}
                   <motion.div
-                    className="absolute top-4 right-4 w-2 h-2 bg-primary/30 rounded-full"
+                    className="absolute top-4 right-4 w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary/30 rounded-full"
                     animate={{
                       y: [0, -10, 0],
                       opacity: [0.3, 0.8, 0.3],
@@ -177,7 +177,7 @@ export default function WorkSection() {
                     }}
                   />
                   <motion.div
-                    className="absolute bottom-20 left-4 w-1 h-1 bg-accent/40 rounded-full"
+                    className="absolute bottom-16 sm:bottom-20 left-4 w-1 h-1 sm:w-1 sm:h-1 bg-accent/40 rounded-full"
                     animate={{
                       y: [0, -8, 0],
                       opacity: [0.2, 0.6, 0.2],

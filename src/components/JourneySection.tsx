@@ -100,12 +100,12 @@ export default function JourneySection() {
   };
 
   return (
-    <section className={`scroll-mt-40 px-4 sm:px-6 lg:px-8 transition-all duration-500 ${
+    <section className={`scroll-mt-[140px] sm:scroll-mt-[160px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 transition-all duration-500 ${
       isMuted ? 'opacity-40 grayscale' : 'opacity-100 grayscale-0'
     }`} id="journey">
       <div className="max-w-7xl mx-auto">
         <motion.div 
-          className="flex flex-col gap-6 mb-12 sm:mb-16 text-center max-w-2xl mx-auto"
+          className="flex flex-col gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16 text-center max-w-2xl mx-auto"
           initial={{ opacity: 0, y: -30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -30 }}
           transition={{ duration: 0.6, ease: [0.25, 0.1, 0.25, 1] as const }}
@@ -115,7 +115,7 @@ export default function JourneySection() {
           }`}>
             The Code Chronicles
           </h2>
-          <p className={`text-base sm:text-lg transition-colors duration-500 ${
+          <p className={`text-sm sm:text-base lg:text-lg transition-colors duration-500 px-4 sm:px-0 ${
             isMuted ? 'text-slate-400 dark:text-slate-500' : 'text-slate-600 dark:text-slate-300'
           }`}>
             My evolution wasn&apos;t a straight line—it was a series of commits, merges, and refactors.
@@ -124,7 +124,7 @@ export default function JourneySection() {
         
         <div className="relative w-full">
           <motion.div 
-            className="absolute left-4 sm:left-6 lg:left-1/2 top-0 bottom-0 w-1 lg:-translate-x-1/2 bg-gradient-to-b from-primary via-purple-500 to-transparent opacity-30 rounded-full origin-top"
+            className="absolute left-3 sm:left-6 lg:left-1/2 top-0 bottom-0 w-0.5 sm:w-1 lg:-translate-x-1/2 bg-gradient-to-b from-primary via-purple-500 to-transparent opacity-30 rounded-full origin-top"
             variants={timelineVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -148,9 +148,9 @@ export default function JourneySection() {
                   }`}
                 >
                   {/* Mobile/Tablet Layout */}
-                  <div className="w-full lg:hidden relative pl-12 sm:pl-16">
+                  <div className="w-full lg:hidden relative pl-10 sm:pl-16">
                     <motion.div 
-                      className={`glass-panel p-4 sm:p-6 rounded-2xl relative overflow-hidden ${item.hoverBorder} transition-colors duration-300`}
+                      className={`glass-panel p-4 sm:p-6 rounded-xl sm:rounded-2xl relative overflow-hidden ${item.hoverBorder} transition-colors duration-300`}
                       whileHover={{ 
                         scale: 1.02,
                         y: -5,
@@ -158,25 +158,25 @@ export default function JourneySection() {
                       }}
                     >
                       <motion.div 
-                        className="absolute top-0 right-0 p-2 sm:p-3 opacity-10 group-hover:opacity-20 transition-opacity"
+                        className="absolute top-0 right-0 p-2 sm:p-3 opacity-5 sm:opacity-10 group-hover:opacity-20 transition-opacity"
                         whileHover={{ rotate: 5, scale: 1.1 }}
                       >
-                        <IconComponent className="text-[60px] sm:text-[80px] text-slate-400 dark:text-slate-600" />
+                        <IconComponent className="text-[50px] sm:text-[80px] text-slate-400 dark:text-slate-600" />
                       </motion.div>
                       
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-2 sm:mb-4">
                         <motion.span 
-                          className={`font-mono text-xs sm:text-sm font-bold ${item.textColor}`}
+                          className={`font-mono text-[10px] sm:text-sm font-bold ${item.textColor}`}
                           whileHover={{ scale: 1.05 }}
                         >
                           {item.id}
                         </motion.span>
                         <span className="hidden sm:block h-px w-8 bg-slate-400 dark:bg-slate-600" />
-                        <span className="text-slate-900 dark:text-white font-bold text-sm sm:text-base">{item.year}</span>
+                        <span className="text-slate-900 dark:text-white font-bold text-xs sm:text-base">{item.year}</span>
                       </div>
                       
-                      <h3 className="text-slate-900 dark:text-white text-lg sm:text-xl font-bold mb-2 sm:mb-3">{item.title}</h3>
-                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base">{item.description}</p>
+                      <h3 className="text-slate-900 dark:text-white text-base sm:text-xl font-bold mb-2 sm:mb-3 leading-tight">{item.title}</h3>
+                      <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-xs sm:text-base">{item.description}</p>
                     </motion.div>
                   </div>
 
@@ -218,7 +218,7 @@ export default function JourneySection() {
                   </div>
                   
                   <motion.div 
-                    className={`absolute left-4 sm:left-6 lg:left-1/2 w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-background border-2 sm:border-4 ${item.borderColor} z-10 lg:-translate-x-1/2 lg:top-1/2 transform -translate-y-1/2 mt-[-12px] sm:mt-[-16px] lg:mt-0 ${item.shadowColor}`}
+                    className={`absolute left-3 sm:left-6 lg:left-1/2 w-2.5 h-2.5 sm:w-4 sm:h-4 rounded-full bg-background border-2 sm:border-4 ${item.borderColor} z-10 lg:-translate-x-1/2 lg:top-1/2 transform -translate-y-1/2 mt-[-10px] sm:mt-[-16px] lg:mt-0 ${item.shadowColor}`}
                     whileHover={{ scale: 1.3 }}
                     animate={{
                       boxShadow: [

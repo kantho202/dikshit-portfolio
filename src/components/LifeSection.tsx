@@ -38,14 +38,14 @@ export default function LifeSection() {
   ];
 
   return (
-    <section className={`scroll-mt-40 px-4 sm:px-6 lg:px-8 transition-all duration-500 ${
+    <section className={`scroll-mt-[140px] sm:scroll-mt-[160px] px-4 sm:px-6 lg:px-8 py-8 sm:py-12 transition-all duration-500 ${
       isMuted ? 'opacity-40 grayscale' : 'opacity-100 grayscale-0'
     }`} id="life">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 items-start">
+        <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-16 items-start">
           {/* Content Section - Mobile First */}
-          <div className="flex flex-col gap-6 lg:w-1/3 lg:sticky lg:top-32">
-            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight transition-colors duration-500 ${
+          <div className="flex flex-col gap-4 sm:gap-6 lg:w-1/3 lg:sticky lg:top-32">
+            <h2 className={`text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-black tracking-tight leading-tight transition-colors duration-500 ${
               isMuted ? 'text-slate-500 dark:text-slate-600' : 'text-slate-900 dark:text-white'
             }`}>
               Beyond the <br />
@@ -55,7 +55,7 @@ export default function LifeSection() {
                 Keyboard
               </span>
             </h2>
-            <p className={`text-base sm:text-lg leading-relaxed max-w-md lg:max-w-none transition-colors duration-500 ${
+            <p className={`text-sm sm:text-base lg:text-lg leading-relaxed max-w-md lg:max-w-none transition-colors duration-500 ${
               isMuted ? 'text-slate-400 dark:text-slate-500' : 'text-slate-600 dark:text-slate-300'
             }`}>
               To write better code, I step away from the screen. These are the pursuits that recharge
@@ -87,10 +87,10 @@ export default function LifeSection() {
           </div>
           
           {/* Images Grid - Responsive Layout */}
-          <div className="w-full lg:w-2/3 mt-8 lg:mt-0">
+          <div className="w-full lg:w-2/3 mt-4 sm:mt-6 lg:mt-0">
             {/* Mobile Layout - Single Column */}
-            <div className="grid grid-cols-1 gap-4 sm:hidden">
-              <div className="relative h-64 rounded-2xl overflow-hidden group">
+            <div className="grid grid-cols-1 gap-3 sm:hidden">
+              <div className="relative h-56 rounded-xl overflow-hidden group">
                 <Image
                   src={lifeImages[0].image}
                   alt={lifeImages[0].alt}
@@ -99,20 +99,20 @@ export default function LifeSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 p-4">
-                  <h3 className="text-white font-bold text-xl mb-1">
+                  <h3 className="text-white font-bold text-lg mb-1">
                     {lifeImages[0].title}
                   </h3>
-                  <p className="text-gray-300 text-sm">
+                  <p className="text-gray-300 text-xs">
                     {lifeImages[0].subtitle}
                   </p>
                 </div>
               </div>
               
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 {lifeImages.slice(1).map((item) => {
                   const IconComponent = item.icon;
                   return (
-                    <div key={item.id} className="relative h-32 rounded-2xl overflow-hidden group">
+                    <div key={item.id} className="relative h-28 rounded-xl overflow-hidden group">
                       <Image
                         src={item.image}
                         alt={item.alt}
@@ -120,10 +120,10 @@ export default function LifeSection() {
                         className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                      <div className="absolute bottom-0 left-0 right-0 p-3 bg-black/50 backdrop-blur-sm">
-                        <div className="flex items-center gap-2 text-white">
-                          {IconComponent && <IconComponent className="text-sm" />}
-                          <h3 className="font-bold text-sm">{item.title}</h3>
+                      <div className="absolute bottom-0 left-0 right-0 p-2.5 bg-black/50 backdrop-blur-sm">
+                        <div className="flex items-center gap-1.5 text-white">
+                          {IconComponent && <IconComponent className="text-xs" />}
+                          <h3 className="font-bold text-xs">{item.title}</h3>
                         </div>
                       </div>
                     </div>
