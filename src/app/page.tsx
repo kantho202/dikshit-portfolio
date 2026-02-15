@@ -13,11 +13,13 @@ import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ThemeToggle from '@/components/ThemeToggle';
 import CustomCursor from '@/components/CustomCursor';
+import PageLoader from '@/components/PageLoader';
 import { SectionProvider } from '@/contexts/SectionContext';
 
 export default function Home() {
   return (
     <div className="scroll-smooth overflow-x-hidden w-full max-w-full">
+      <PageLoader />
       <CustomCursor />
       <Header />
       <HeroSection />
