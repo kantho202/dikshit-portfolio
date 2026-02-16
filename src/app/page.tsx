@@ -25,9 +25,10 @@ export default function Home() {
       <HeroSection />
       <AboutSection />
       <Navigation />
+      <div className="h-12 sm:h-16 md:h-20" />
       
       <SectionProvider>
-        <div className="layout-content-container flex flex-col max-w-[1080px] w-full px-4 md:px-10 pt-4 sm:pt-6 md:pt-8 pb-20 gap-16 sm:gap-20 md:gap-24 lg:gap-32 mx-auto overflow-x-hidden">
+        <div className="layout-content-container flex flex-col max-w-[1080px] w-full px-4 md:px-10 pb-20 gap-16 sm:gap-20 md:gap-24 lg:gap-32 mx-auto overflow-x-hidden">
           <JourneySection />
           <WorkSection />
           <LifeSection />
