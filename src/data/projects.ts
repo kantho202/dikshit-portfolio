@@ -84,12 +84,12 @@ export const projectsData: ProjectData[] = [
     title: 'Online Ticket Booking System',
     shortDescription: 'Mobile-first platform for seamless ticket booking with real-time availability and secure payment processing.',
     fullDescription: 'A comprehensive online ticket booking platform that revolutionizes the way users book tickets for events, transportation, and entertainment. Built with a mobile-first approach, it features real-time seat selection, secure payment processing, and an intuitive user interface that makes booking tickets effortless.',
-    image: "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=1000&auto=format&fit=crop",
+    image: "/Easy_Tip_Ticket_Image/Easy_Trip_Ticket_Home.png",
     gallery: [
-      "https://images.unsplash.com/photo-1586953208448-b95a79798f07?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=1000&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=1000&auto=format&fit=crop"
+      "/Easy_Tip_Ticket_Image/Easy_Trip_Ticket_Home.png",
+      "/Easy_Tip_Ticket_Image/Easy_Trip_Ticket_dashboard_manageTickets.png",
+      "/Easy_Tip_Ticket_Image/Easy_Trip_Ticket_dashboard_mangeUsers.png",
+      "/Easy_Tip_Ticket_Image/Easy_Trip_Ticket_dashboard_advertiseTickets.png"
     ],
     tags: ['Node.js', 'Firebase', 'React'],
     tagColors: ['bg-green-500/10 text-green-600 dark:text-green-400', 'bg-orange-500/10 text-orange-500', 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'],
