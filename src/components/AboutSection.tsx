@@ -115,13 +115,13 @@ export default function AboutSection() {
                   {/* Download Resume Button Only */}
                   <Button 
                     onClick={() => {
-                      window.open('https://drive.google.com/uc?export=download&id=18xwq1dYq6dVCVdb1CnHgzvxGWzZOs8g4', '_blank');
+                      window.open('https://drive.google.com/file/d/18xwq1dYq6dVCVdb1CnHgzvxGWzZOs8g4/view', '_blank');
                     }}
                     data-cursor="download"
                     className="group bg-primary hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(19,146,236,0.3)] hover:shadow-[0_0_30px_rgba(19,146,236,0.5)] transition-all relative overflow-hidden w-full sm:w-auto"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-                    <span className="mr-2 relative z-10">Download Resume</span>
+                    <span className="mr-2 relative z-10">View Resume</span>
                     <MdDownload className="text-sm group-hover:translate-y-1 transition-transform relative z-10" />
                   </Button>
                 </motion.div>
