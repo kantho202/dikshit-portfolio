@@ -115,7 +115,7 @@ export default function AboutSection() {
                   {/* Download Resume Button Only */}
                   <Button 
                     onClick={() => {
-                      window.open('https://drive.google.com/file/d/18xwq1dYq6dVCVdb1CnHgzvxGWzZOs8g4/view', '_blank');
+                      window.open('https://drive.google.com/file/d/1HuUXMTRsJlOCu8OpnAlIR0tWLLyNw_X3/view?usp=sharing', '_blank');
                     }}
                     data-cursor="download"
                     className="group bg-primary hover:bg-blue-500 text-white shadow-[0_0_20px_rgba(19,146,236,0.3)] hover:shadow-[0_0_30px_rgba(19,146,236,0.5)] transition-all relative overflow-hidden w-full sm:w-auto"
